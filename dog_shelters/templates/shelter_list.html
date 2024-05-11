@@ -11,13 +11,13 @@ Shelter list
 
 <h2>Shelter list</h2>
 <div>Here is the list of registered shelters</div>
-    {% for shelter in shelters %}
-        <div>
-            <a href="{% url 'shelter_detail' shelter.id %}">
-                {{shelter.name}}
-            </a>
-        </div>
-    {% endfor %}
+{% for shelter in shelters %}
+<div>
+    <a href="{% url 'shelter_detail' shelter.id %}">
+        {{shelter.name}}
+    </a>
+</div>
+{% endfor %}
 </div>
 
 {% endblock %}

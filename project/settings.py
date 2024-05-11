@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,19 +22,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 #TO_DO Add the secret key
-#SECRET_KEY = 'SECRET_KEY'
+SECRET_KEY = 'd6k+u*n+-h=0nl!7u=7)o0c=0#k5&-r)-7%)()_6fueef^14#^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
 
 ##TO-DO Add the ALLOWED HOST FROM THE APP NAME
-#ALLOWED_HOSTS = ['*', 'domain.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
     'dog_shelters.apps.DogSheltersConfig',
+    'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'crispy_bootstrap5',
+    'health_check',                             
+    'health_check.db',                          
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,26 +87,26 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 #TO-DO update db to use the postgresql / Azure and ElephantDb
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'ENGINE',
-#        'NAME': 'NAME',
-#        'HOST': 'HOST',
-#        'USER': 'USER',
-#        'PASSWORD': 'PASSWORD',
-#        'PORT': 'PORT',
-#        'OPTIONS': {
-#            'sslmode': 'require',
-#        },
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangodbbenja', #Nombre bd
+        'HOST': 'djangoweb2024.postgres.database.azure.com', #Host bd
+        'USER': 'benjadb',
+        'PASSWORD': 'ProgramacionWeb#',
+        'PORT': '5432', #Buscado en django postgresql
+        'OPTIONS': {
+            'sslmode': 'require', #Bd remota o en la nube se utiliza sslmode require
+        },
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 
 # Password validation
@@ -120,11 +127,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = 'core.CustomUser'  
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -139,3 +146,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Variables de redirrecion de login y logout
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+

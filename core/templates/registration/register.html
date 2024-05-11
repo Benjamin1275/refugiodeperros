@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3 class="mb-4">Registro de usuario</h3>
+                    </div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" type="submit">Registrarse</button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p class="mb-2">¿Ya tienes una cuenta?</p>
+                            <a href="{% url 'login' %}" class="btn btn-outline-primary">Iniciar sesión</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('id_rut').addEventListener('input', function (e) {
+        var target = e.target, position = target.selectionEnd, length = target.value.length;
+
+        target.value = target.value.replace(/\./g, '').replace(/-/g, '');
+        target.value = target.value.replace(/(\d{2})(\d{3})(\d{3})(\d{1})$/, '$1.$2.$3-$4');
+
+        if (position === length - 1 && target.value[position] === '.') {
+            position++;
+        }
+        if (position === length - 2 && target.value[position] === '-') {
+            position++;
+        }
+        target.setSelectionRange(position, position);
+    });
+</script>
+
+
+{% endblock %}

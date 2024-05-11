@@ -16,7 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+
+
 urlpatterns = [
-    path('', include('dog_shelters.urls')),
+    path('', include('core.urls')),
+    path('shelters/', include('dog_shelters.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('health/', include('health_check.urls')),
+
 ]
+
+
