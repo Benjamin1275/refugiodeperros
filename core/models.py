@@ -12,3 +12,9 @@ class CustomUser(AbstractUser):
     def validate_unique(self, exclude=None):
         exclude = ('rut',) if exclude is None else tuple(exclude) + ('rut',)
         super().validate_unique(exclude=exclude)
+        
+    def __str__(self):
+        if self.username == 'admin':
+            return 'Super usuario admin'
+        return f'Usuario: {self.username} - Rut: {str(self.rut)}'
+    
