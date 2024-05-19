@@ -8,7 +8,7 @@ WIBBLE2 = 'Wibble2'
 
 # CSRF_TRUSTED_ORIGINS = ['https://*'] 
 # TO-DO once deployed from VS code
-CSRF_TRUSTED_ORIGINS = ['https://apprefugiodeperros.azurewebsites.net', '*']
+CSRF_TRUSTED_ORIGINS = ['https://apprefugiodeperros.azurewebsites.net'] # '*'
 
 #add the next middleware for whitenoise
 MIDDLEWARE = [
