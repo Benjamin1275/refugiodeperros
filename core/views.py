@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_protect
 
 from django.http import HttpResponse
 
@@ -19,7 +20,7 @@ def exit(request):
     logout(request)
     return redirect('home')
 
-
+@csrf_protect
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -38,3 +39,5 @@ def register(request):
 
 def health_check(request):
     return HttpResponse("OK")
+
+
