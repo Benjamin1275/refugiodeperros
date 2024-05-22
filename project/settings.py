@@ -49,6 +49,8 @@ INSTALLED_APPS = [
                           
 ]
 
+
+
 JAZZMIN_UI_TWEAKS = {
     "theme": "simplex",
 }
@@ -91,7 +93,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -102,7 +104,9 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+                        BASE_DIR / 'templates', #Se agreggo BASE_DIR / 'templates' para que busque en la carpeta templates
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
