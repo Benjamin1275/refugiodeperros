@@ -43,3 +43,13 @@ def health_check(request):
     return HttpResponse("OK")
 
 
+"""
+@csrf_exempt: Este decorador marca una vista como exenta de la protección CSRF proporcionada por el middleware. 
+Úsalo con precaución ya que desactiva la protección CSRF para esa vista específica.
+@csrf_protect: Decorador que proporciona la protección de CsrfViewMiddleware a una vista1. 
+Asegúrate de que solo las vistas que necesitan protección CSRF lo tengan.
+@requires_csrf_token: Si csrf_token no funciona porque CsrfViewMiddleware.process_view no se ha ejecutado, 
+este decorador garantiza que la etiqueta de plantilla funcione correctamente.
+@ensure_csrf_cookie: Este decorador fuerza a una vista a enviar la cookie CSRF, 
+lo cual es útil si tu formulario CSRF se encuentra en una página diferente a la que procesa la solicitud.
+"""
