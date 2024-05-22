@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
-import re
+import re #Para validar el RUT ya que manipula cadenas basandose en patrones espcificos
 
 
     
