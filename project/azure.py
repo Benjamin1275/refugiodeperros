@@ -9,7 +9,7 @@ WIBBLE2 = 'Wibble2'
 # CSRF_TRUSTED_ORIGINS = ['https://*'] 
 # TO-DO once deployed from VS code
 CSRF_TRUSTED_ORIGINS = ['https://apprefugiodeperros.azurewebsites.net']
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 #https://apprefugiodeperros.azurewebsites.net
 #add the next middleware for whitenoise
@@ -18,7 +18,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', #Podria borrarse y solucionarse
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

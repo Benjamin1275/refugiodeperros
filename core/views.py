@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.shortcuts import render
 
 from django.http import HttpResponse
 
@@ -16,11 +17,12 @@ def home(request):
 def dogs(request):
     return render(request, 'core/dogs.html')
 
+
 def exit(request):
     logout(request)
     return redirect('home')
 
-@csrf_protect
+@ensure_csrf_cookie
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
