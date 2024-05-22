@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'jazzmin',
     'dog_shelters.apps.DogSheltersConfig',
     'core.apps.CoreConfig',
@@ -89,9 +90,13 @@ JAZZMIN_SETTINGS = {
 CRISPY_ALLOWED_TEMPLATE_PACKS = ['bootstrap5']
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-CSRF_USE_SESSIONS = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost:9010',
+    'apprefugiodeperros.azurewebsites.net',
+)
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
